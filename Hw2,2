@@ -1,0 +1,13 @@
+// Copyright (C) 2017 - Corporation - Author
+//
+// Made by Galkin Ilya
+//
+// Date of creation: 22.11.2017
+//
+clf()
+x=[-2:0.1:2]'
+plot(x,(2+(sin(x))^2)/(1+x**2))
+x=[-2:0.1:0]'
+plot(x,((3*x**2)/(1+x**2)))
+x=[0:0.1:2]'
+plot(x,(sqrt(1+(2*x)/(1+x**2))))
