@@ -1,0 +1,92 @@
+// Copyright (C) 2017 - Corporation - Author
+//
+// Made by Galkin Ilya
+//
+// Date of creation: 27.11.2017
+//1part
+timer()
+s=primes(1000000)
+disp("time="+string(timer())) 
+//2part
+timer()
+i=1
+k=0
+d=size(s)
+while i<d(2)
+    i=i+1
+    if s(i)==s(i-1)+2 then
+        k=k+1 //кол-во близнецов
+    end
+end
+disp('=k', k)
+k=0
+// 3-4part
+disp("time="+string(timer())) 
+timer()
+x=[0:1:1000000]
+plot(primes(1000000)) // F простых
+x=[1:1:1000000]
+plot(x/log(x))
+disp("time:"+string(timer()))
+//5part 
+timer()
+i=1
+b=0
+n=0
+w=0
+while i<10000001
+    i=i+1
+    format(12)
+    k=rand(1,1, 'normal')
+    k=k*10000000000
+    for j=1:(k/2)
+        if k/j==int(k/j) then
+         w=1 //проверка на непростоту
+        end,
+        if j==k/2 then
+            if w==0 then
+                b=b+1  //проверка на принадлежность к простым
+            end,
+        end,
+    end,
+end
+n=(b/i)*100
+disp(n)
+disp("time:"+string(timer()))
+//6part
+k=0
+i=0
+timer()
+while i<10000001
+    i=i+1
+    format(12)
+    k=rand(1,1, 'normal')
+    k=k*10000000000
+    j=0
+    w=0
+    for j=1:(k/2)
+        if k/j==int(k/j) then
+         w=1 //проверка на непростоту
+        end,
+        if j==k/2 then
+            if w==0 then
+                b=b+1  //проверка на принадлежность к простым
+            end,
+        end,
+    end,
+    j=0
+    b1=0
+     v=[2, 3, 5, 7, 11]
+     while j<=5
+         j=j+1
+         if k/v(j)==int(k/v(j)) then
+         w=1 //проверка на непростоту
+        end,
+        if j==5 then
+            if w==0 then
+                b1=b1+1  //проверка на делимость
+            end,
+        end,
+    end,
+an=(b1/b)*100
+disp("time:"+string(timer()))
