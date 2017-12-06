@@ -1,0 +1,22 @@
+// Copyright (C) 2017 - Corporation - Author
+//
+// Made by Galkin Ilya
+//
+// Date of creation: 29.11.2017
+//
+timer()
+i=1
+b=0
+v=primes
+while i<10000001
+    i=i+1
+    format(12)
+    k=rand(1,1, 'normal')
+    k=k*10000000000
+    while j
+        b=b+1
+    end,
+end
+n=(b/i)*100
+disp(n)
+disp("time:"+string(timer()))
