@@ -1,0 +1,104 @@
+// Copyright (C) 2017 - Corporation - Author
+//
+// Made by Galkin Ilya
+//
+// Date of creation: 05.12.2017
+//
+//part1
+function z=vec(x,y) //функция вектор*вектор
+    i=[1,0,0]
+    j=[0,1,0]
+    k=[0,0,1]
+    i1=[x(2),x(3);y(2),y(3)]    //i1,j1,k1 - квадратные матрицы
+    j1=[x(1),x(3);y(1),y(3)]
+    k1=[x(1),x(2);y(1),y(2)]
+    z=i*detr(i1)-j*detr(j1)+k*detr(k1)   //вектор*вектор при помощи матриц
+endfunction
+//площадь треуг
+A=input("А(x,y,z): ")   //Точки
+B=input("В(x,y,z): ")
+C=input("С(x,y,z): ")//векторы АВ і АС
+a=B-A 
+b=C-A
+s=vec_dobutok(a,b)
+S=0.5*sqrt(s(1)^2+s(2)^2+s(3)^2) //площадь
+disp("Площадь треугольника ABC = "+string(S))
+//part2
+function s=mishan_pr(x,y,z)
+i=[1,0,0]
+j=[0,1,0]
+k=[0,0,1]
+i1=[x(2),x(3);y(2),y(3)]
+j1=[x(1),x(3);y(1),y(3)]
+k1=[x(1),x(2);y(1),y(2)]
+x1=i*detr(i1)-j*detr(j1)+k*detr(k1)
+y1=x1.*z 
+s=y1(1)+y1(2)+y1(3)
+if s==0 then //компланарность
+    disp("компланарность")
+else
+    disp("не компланарность")
+end
+endfunction
+pause
+//перевірка на принадлежность точек площади
+function tchk=(A,B,C,D)
+//кординаты вектора
+x=B-A
+y=C-A
+z=D-A
+//значение произведение
+if mishan_pr==0 then
+    disp("точки лежат  в одній плоскости")
+else
+    disp("точки не лежат в одной плоскости")
+end
+endfunction
+//part3
+function parametrichn(s)
+//поиск символа х в ряде
+x=strindex(s,"x")
+if size(x)>0 then
+    a=part(s,[1:x-1])
+    a=evstr(a)
+else
+    a=0    //если х нет то переменная = 0
+    x=0
+end
+//то тже алгоритм
+y=strindex(s,"y") 
+if size(y)>0 then
+    b=part(s,[x+1:y-1])
+    b=evstr(b)
+else
+    b=0
+end
+z=strindex(s,"=")
+//находим с
+c=part(s,[z+1:length(s)])
+c=evstr(c)
+// вычисление x y
+x0=1
+//для уровнения ах=с
+if b==0 then
+    x0=c/a
+    y0=0
+end
+//для уравнения by=с
+if a==0 then
+        y0=c/b
+        x0=0
+    else
+        y0=(-a+c)/b  //для уровнения виду ax+by=c
+end
+if -b>=0 then   //если ((-b)>0 то  ставится "+" перед b
+    disp("x="+string(x0)+"+"+string(-b)+"t") 
+else
+    disp("x="+string(x0)+string(-b)+"t")
+end
+if a>=0 then
+    disp("y="+string(y0)+"+"+string(a)+"t") //якщо a>0 
+else
+    disp("y="+string(y0)+string(a)+"t")
+end
+endfunction
